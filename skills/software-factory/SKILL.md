@@ -19,6 +19,7 @@ Produce software by satisfying named, checkable properties with small attributed
 7. State the evidence class honestly. Never write `tested` for something that was not executed, and never write `proved` without naming the model and its premises.
 8. Commit per slice, with the property id in the message.
 9. A judged result never promotes a property above `tested` on its own.
+10. The planner never prescribes implementation. State the property, witness, evidence, and acceptance; never file paths, package names, function signatures, algorithms, SQL, or refactor steps. The executor chooses the method.
 
 ## Artifacts
 
@@ -72,6 +73,7 @@ Invoke the `cheat-corpus` skill for every derived property, and for every integr
 
 ## What to refuse
 
+- A plan that names files, functions, algorithms, or SQL. Rewrite it as the observation that would prove the property false.
 - An obligation whose `locus` is not `code` (for example a latency target that requires a database index or cache policy). Report it as out of scope instead of emitting a code diff that pretends to address it.
 - A property with no witness. Ask what observation would prove it false.
 - A request to weaken a check so a diff passes. If the check is wrong, change the ledger explicitly and explain why.

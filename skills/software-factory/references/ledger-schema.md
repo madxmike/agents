@@ -48,6 +48,8 @@ non_goals:
 
 **statement** — one sentence. It must be observable without reading the implementation. If the sentence requires the word "clean", "cohesive", or "maintainable", it is not yet a property.
 
+**check** — the command proves the property, not a package layout. Prefer `go test ./...` over a package-specific path; the layout is the implementer's choice.
+
 **witness** — the concrete observation that would prove the statement false. A property without a witness is not usable: it cannot fail, so it cannot gate anything. Write the witness before the check.
 
 **locus** — the layer permitted to satisfy the property. If a property can only be satisfied outside the code, the implementation must refuse it rather than emit a plausible code diff. Latency, availability under provider failure, and data correctness across systems usually have `locus` of `config`, `infra`, or `data`.

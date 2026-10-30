@@ -99,3 +99,26 @@ Record the conflict. If one property has priority, state the order. If not, stop
 ## 9. Produce the artifacts
 
 Write `.factory/ledger.yaml` and `.factory/scenarios.md`. Report the property count, the number of `assumed` entries, and any unresolved conflicts. Do not begin implementation in this phase.
+
+## Planner boundary
+
+The planner writes outcomes, not methods. The implementer chooses how.
+
+**Include:**
+
+- observable behavior, status codes, bodies, error codes
+- domain rules and identity
+- failure behavior and time bounds
+- structural constraints stated as outcomes
+- the evidence required and the acceptance check
+- non-goals and unresolved conflicts
+
+**Exclude:**
+
+- file and package paths
+- function and type signatures
+- SQL, algorithms, and the order of internal steps
+- test names or locations
+- refactor sequences
+
+**Test:** could a competent implementer satisfy this without seeing the original code? If the spec names a file, a function, a statement, or a refactor step, it is over-prescribed. Rewrite it as the observation that would prove the property false.

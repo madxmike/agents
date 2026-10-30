@@ -72,3 +72,7 @@ One slice per commit. If a commit contains two properties, split it.
 ## Reporting
 
 Report the slice, the diff size, the verification output, the frame result, the cheats applied, the resulting evidence class, and the next obligation. State failures with the command and output, not a summary.
+
+## The executor chooses the method
+
+Read the property and the contract. Choose the packages, signatures, and tests. If the plan prescribes code, stop and return to planning; do not implement a spec that has already decided the implementation.

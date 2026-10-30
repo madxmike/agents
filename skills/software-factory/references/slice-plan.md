@@ -57,3 +57,13 @@ If the slice cannot preserve the frame, it is too large or it needs an enabling 
 ## Output
 
 Write `.factory/slices.md` containing the ordered list, the property each slice closes, its verification command, and the frame. Report the total number of slices and the first three.
+
+## Slices are outcomes
+
+A slice states what becomes true, not what files change.
+
+Bad: "add `Store.Delete` using `DELETE FROM books`".
+
+Good: "a repeated DELETE succeeds and leaves no row".
+
+`diff_scope` is a conflict boundary between parallel workers, not an instruction to the implementer. If no conflict is possible, omit it. Never put implementation steps, signatures, or SQL in a slice.
