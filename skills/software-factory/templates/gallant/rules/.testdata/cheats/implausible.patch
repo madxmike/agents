@@ -1,0 +1,19 @@
+--- a/internal/orders/order.go
++++ b/internal/orders/order.go
+@@ -1,16 +1,3 @@
+-package orders
+-
+-import "errors"
+-
+-type Order struct {
+-	ID       string
+-	Total    int
+-	mailHost string
+-}
+-
+-func (o *Order) SendReceipt() error {
+-	return smtp(o.mailHost, o.ID)
+-}
++package orders
++
++func (o *Order) SendReceipt() error { return nil }

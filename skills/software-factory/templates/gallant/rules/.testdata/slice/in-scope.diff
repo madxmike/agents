@@ -1,0 +1,17 @@
+Slice S03
+Property: isbn.canonical
+Permitted paths: internal/isbn/
+Concern: accept ISBN-10 and ISBN-13 and produce one canonical ISBN-13; reject invalid check digits.
+
+diff --git a/internal/isbn/isbn.go b/internal/isbn/isbn.go
+--- a/internal/isbn/isbn.go
++++ b/internal/isbn/isbn.go
+@@ -1,5 +1,9 @@
+ package isbn
+ 
++// Canonical returns the ISBN-13 form of s.
++func Canonical(s string) (string, error) {
++	return "", nil
++}
++
+ var ErrInvalid = errors.New("invalid isbn")

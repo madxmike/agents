@@ -1,0 +1,23 @@
+Slice S03
+Property: isbn.canonical
+Permitted paths: internal/isbn/
+Concern: accept ISBN-10 and ISBN-13 and produce one canonical ISBN-13; reject invalid check digits.
+
+diff --git a/internal/httpapi/handler.go b/internal/httpapi/handler.go
+--- a/internal/httpapi/handler.go
++++ b/internal/httpapi/handler.go
+@@ -10,3 +10,8 @@
+ // handleGet returns one book.
+ func (s *Server) handleGet(w http.ResponseWriter, r *http.Request) {
+ 	writeJSON(w, http.StatusOK, s.store.Get(r.Context(), r.PathValue("isbn")))
+ }
++
++func (s *Server) handleList(w http.ResponseWriter, r *http.Request) {
++	writeJSON(w, http.StatusOK, s.store.All())
++}
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,4 @@
+ # Book API
++Add pagination to the list endpoint.

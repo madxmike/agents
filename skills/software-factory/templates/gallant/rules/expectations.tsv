@@ -1,0 +1,11 @@
+# Rule|Sample|Expected|Note
+comments-describe-behavior|.testdata/comments/bad.go|fail|comment names the wrong form and restates code
+comments-describe-behavior|.testdata/comments/good.go|pass|comment carries constraints and the 979 rule
+evidence-names-artifact|.testdata/evidence/bad/evidence.md|fail|proved with no artifact or model
+evidence-names-artifact|.testdata/evidence/good/evidence.md|pass|artifact named, no assumptions
+slice-stays-in-scope|.testdata/slice/out-of-scope.diff|fail|touches httpapi and README
+slice-stays-in-scope|.testdata/slice/in-scope.diff|pass|single concern inside permitted paths
+error-text-discloses-internals|.testdata/errors/bad.go|fail|returns driver text to the client
+error-text-discloses-internals|.testdata/errors/good.go|pass|stable code, detail logged
+cheat-plausibility|.testdata/cheats/implausible.patch|fail|whole-file deletion with no fix
+cheat-plausibility|.testdata/cheats/plausible.patch|pass|looks like a guard clause

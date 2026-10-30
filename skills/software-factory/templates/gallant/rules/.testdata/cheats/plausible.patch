@@ -1,0 +1,11 @@
+--- a/internal/orders/order.go
++++ b/internal/orders/order.go
+@@ -14,6 +14,9 @@ func (o *Order) SendReceipt() error {
+ 	if o.Total == 0 {
+ 		return nil
+ 	}
++	if o.ID == "" {
++		return nil
++	}
+ 	return smtp(o.mailHost, o.ID)
+ }

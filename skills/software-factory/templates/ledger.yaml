@@ -1,0 +1,27 @@
+version: 1
+system: <system-name>
+
+scope:
+  decisions:
+    - id: D1
+      decision: <decision>
+      rationale: <why this constrains everything downstream>
+
+properties:
+  - id: <group.behaviour>
+    kind: primitive
+    scope: repo
+    locus: code
+    polarity: require
+    statement: <one observable sentence>
+    witness: <the observation that would prove this false>
+    check:
+      kind: test
+      command: <command that runs in CI>
+    evidence: tested
+    assumes: []
+    conflicts: []
+    waivers: []
+
+non_goals:
+  - <explicitly excluded capability>
