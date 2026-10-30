@@ -20,6 +20,7 @@ Produce software by satisfying named, checkable properties with small attributed
 8. Commit per slice, with the property id in the message.
 9. A judged result never promotes a property above `tested` on its own.
 10. The planner never prescribes implementation. State the property, witness, evidence, and acceptance; never file paths, package names, function signatures, algorithms, SQL, or refactor steps. The executor chooses the method.
+11. Prefer a type that makes the invariant unrepresentable over a test. If it cannot be encoded, put it on the escape list.
 
 ## Artifacts
 
@@ -29,6 +30,7 @@ Create at the repository root:
 .factory/
   ledger.yaml          # properties, scope decisions, non-goals
   scenarios.md         # stimuli, required responses, evidence points
+  types.md             # invariant -> type map, escape list
   slices.md            # ordered work, one property per slice
   evidence.md          # per-property evidence, artifacts, assumptions
   cheats/              # adversarial diffs that must be rejected
@@ -45,13 +47,21 @@ Read `references/spec-to-properties.md`. Produce `.factory/ledger.yaml` and `.fa
 
 Do not proceed until every property has a statement, a witness, a check (or `assumed`), and an evidence class. Ask the user to confirm any property that is `assumed` or that conflicts with another property.
 
-### Phase 2: Plan the slices
+### Phase 2: Design the types
+
+Read `references/type-design.md`. Produce `.factory/types.md`.
+
+For each property, decide whether a value that violates it can be constructed. If not, name the type that makes it unrepresentable. If it can, record why and which check covers it. Every property ends up either type-enforced or on the escape list.
+
+Do not proceed until the escape list is explicit. A design with no escape list is fiction.
+
+### Phase 3: Plan the slices
 
 Read `references/slice-plan.md`. Produce `.factory/slices.md`.
 
 The plan must contain a first slice that adds the verification harness and no behavior, and must not schedule a property whose check depends on a property that is not yet satisfied.
 
-### Phase 3: Execute and verify
+### Phase 4: Execute and verify
 
 Read `references/execute-slice.md`. Execute one slice, verify it, update the ledger, commit.
 
@@ -59,11 +69,11 @@ For text properties with no deterministic check, run judged checks and record th
 
 Repeat until no unmet properties remain or the user stops the loop. After each slice, recompute obligations from the ledger rather than assuming the plan still holds.
 
-### Phase 4: Audit
+### Phase 5: Audit
 
 Invoke the `evidence-audit` skill before declaring completion, and whenever the user asks whether the suite is trustworthy.
 
-### Phase 5: Escalate evidence where required
+### Phase 6: Escalate evidence where required
 
 Invoke the `formal-escalation` skill for properties that testing cannot settle: concurrency, protocol invariants, arithmetic over money, and unbounded input spaces.
 

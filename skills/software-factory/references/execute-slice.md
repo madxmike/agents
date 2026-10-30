@@ -76,3 +76,5 @@ Report the slice, the diff size, the verification output, the frame result, the 
 ## The executor chooses the method
 
 Read the property and the contract. Choose the packages, signatures, and tests. If the plan prescribes code, stop and return to planning; do not implement a spec that has already decided the implementation.
+
+Read `.factory/types.md` first. Construct values through the designed constructors. Do not add a conversion that bypasses an opaque type, and do not widen a parameter back to a primitive string or int to make a call compile. If a type is missing, return to type design rather than working around it.

@@ -36,6 +36,7 @@ For each property in the ledger:
 10. **History dependence.** If an indicator reads git history, deployment metrics, or review outcomes, it is not a function of the tree. It cannot gate a diff and must not be used as a search gradient.
 11. **Waivers.** List them. Check expiry. An expired waiver is a failed property.
 12. **Assumptions.** Read `assumes`. For each, ask what test validates it. Unvalidated assumptions keep the property at `assumed` regardless of the test result.
+13. **Type-enforced claims.** For each property claimed as type-enforced, try to construct a violating value from outside the package. A conversion, a literal, a zero value, or a struct with unexported fields copied through reflection may still produce one. If it can, the claim is false.
 
 ## Red flags
 

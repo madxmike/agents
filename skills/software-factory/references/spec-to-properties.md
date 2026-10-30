@@ -122,3 +122,5 @@ The planner writes outcomes, not methods. The implementer chooses how.
 - refactor sequences
 
 **Test:** could a competent implementer satisfy this without seeing the original code? If the spec names a file, a function, a statement, or a refactor step, it is over-prescribed. Rewrite it as the observation that would prove the property false.
+
+The property spec does not choose types. That is the next phase, `type-design.md`, which decides which invariants become unrepresentable and which stay on the escape list.
